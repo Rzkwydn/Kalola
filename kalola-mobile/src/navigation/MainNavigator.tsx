@@ -1,18 +1,26 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import DashboardScreen from '../screens/DashboardScreen';
 import SalesManagementScreen from '../screens/SalesManagementScreen';
 import InventoryScreen from '../screens/InventoryScreen';
 
-const Stack = createStackNavigator();
+export type MainStackParamList = {
+  Dashboard: undefined;
+  SalesManagement: undefined;
+  Inventory: undefined;
+};
 
-const MainNavigator = () => {
+const Stack = createStackNavigator<MainStackParamList>();
+const Drawer = createDrawerNavigator();
+
+const MainNavigator: React.FC = () => {
   return (
-    <Stack.Navigator initialRouteName="Dashboard">
+    <Drawer.Navigator initialRouteName="Dashboard">
       <Stack.Screen name="Dashboard" component={DashboardScreen} />
       <Stack.Screen name="SalesManagement" component={SalesManagementScreen} />
       <Stack.Screen name="Inventory" component={InventoryScreen} />
-    </Stack.Navigator>
+    </Drawer.Navigator>
   );
 };
 
