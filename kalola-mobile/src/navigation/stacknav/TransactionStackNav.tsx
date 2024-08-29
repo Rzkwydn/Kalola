@@ -5,7 +5,13 @@ import CartItemScreen from '../../screen/Transaction/CartItemScreen';
 import CheckOutScreen from '../../screen/Transaction/CheckOutScreen';
 import CustomHeader from '../../components/CustomHeader';
 
-const TransactionStack = createStackNavigator();
+export type TransactionStackParamList = {
+  Transaction: undefined;
+  CartItem: undefined;
+  CheckOut: undefined;
+};
+
+const TransactionStack = createStackNavigator<TransactionStackParamList>();
 
 const TransactionStackNav: React.FC = () => {
   return (

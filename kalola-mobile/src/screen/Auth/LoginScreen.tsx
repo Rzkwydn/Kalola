@@ -1,70 +1,22 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { AuthStackParamList } from '../../navigation/AuthNavigator';
-import { globalStyles } from '../../styles/GlobalStyles';
+// src/screens/LoginScreen.tsx
+import React from 'react';
+import { View, Button, Text } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { login } from '../../store/authSlice';
 
-// Tentukan tipe untuk navigation prop
-type LoginScreenNavigationProp = StackNavigationProp<AuthStackParamList, 'Login'>;
+const LoginScreen = () => {
+  const dispatch = useDispatch();
 
-type Props = {
-  navigation: LoginScreenNavigationProp;
-};
-
-const LoginScreen: React.FC<Props> = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    if (!email || !password) {
-      Alert.alert('Error', 'Please enter both email and password.');
-      return;
-    }
-    // Implement authentication logic here
+  const handleLogin = (role: 'admin' | 'cashier' | 'manager') => {
+    dispatch(login(role));
   };
 
   return (
-    <View style={globalStyles.container}>
-      <Text style={globalStyles.title}>Login</Text>
-      
-      <TextInput
-        style={globalStyles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      
-      <TextInput
-        style={globalStyles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        autoCapitalize="none"
-      />
-      
-      <Button title="Login" onPress={handleLogin} />
-
-      <Text style={globalStyles.registerLink}>
-        Don't have an account?{' '}
-        <Text
-          style={globalStyles.linkText}
-          onPress={() => navigation.navigate('Register')}
-        >
-          Register
-        </Text>
-      </Text>
-      <Text style={globalStyles.registerLink}>
-        Forgot Password?{' '}
-        <Text
-          style={globalStyles.linkText}
-          onPress={() => navigation.navigate('Forgot')}
-        >
-          Resset
-        </Text>
-      </Text>
+    <View>
+      <Text>Login Screen</Text>
+      <Button title="Login as Admin" onPress={() => handleLogin('admin')} />
+      <Button title="Login as Casheer" onPress={() => handleLogin('cashier')} />
+      <Button title="Login as Manager" onPress={() => handleLogin('manager')} />
     </View>
   );
 };

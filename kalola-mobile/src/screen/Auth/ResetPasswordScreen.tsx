@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Alert, Button, StyleSheet } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AuthStackParamList } from '../../navigation/AuthNavigator';
-import { globalStyles } from '../../styles/GlobalStyles';
+import { GlobalStyles } from '../../styles/GlobalStyles';
 
 type ForgotNavigationProp = StackNavigationProp<AuthStackParamList, 'Forgot'>;
 
@@ -22,10 +22,10 @@ const ResetPasswordScreen: React.FC<Props> = ({ navigation }) => {
   };
 
   return (
-    <View style={globalStyles.container}>
-      <Text style={globalStyles.title}>Reset Password</Text>
+    <View style={GlobalStyles.container}>
+      <Text style={GlobalStyles.title}>Reset Password</Text>
       <TextInput
-        style={globalStyles.input}
+        style={GlobalStyles.input}
         placeholder="Email"
         value={email}
         onChangeText={setEmail}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Alert, Button, StyleSheet } from 'react-native';
-import { globalStyles } from '../../styles/GlobalStyles';
+import { GlobalStyles } from '../../styles/GlobalStyles';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AuthStackParamList } from '../../navigation/AuthNavigator';
 
@@ -28,24 +28,24 @@ const RegisterScreen: React.FC<Props> = ({ navigation }) => {
   };
 
   return (
-    <View style={globalStyles.container}>
-      <Text style={globalStyles.title}>Register</Text>
+    <View style={GlobalStyles.container}>
+      <Text style={GlobalStyles.title}>Register</Text>
       <TextInput
-        style={globalStyles.input}
+        style={GlobalStyles.input}
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"
       />
       <TextInput
-        style={globalStyles.input}
+        style={GlobalStyles.input}
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
       />
       <TextInput
-        style={globalStyles.input}
+        style={GlobalStyles.input}
         placeholder="Confirm Password"
         value={confirmPassword}
         onChangeText={setConfirmPassword}

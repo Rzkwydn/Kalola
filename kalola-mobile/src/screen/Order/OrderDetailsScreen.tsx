@@ -9,12 +9,6 @@ const OrderDetailsScreen: React.FC  = () => {
       <Text style={GlobalStyles.title}>Order Details</Text>
       {/* Implement dashboard content here */}
       <StatusBar style="auto" />
-      <Text
-          style={GlobalStyles.linkText}
-          onPress={() => /* wola */ }
-        >
-          Cart
-        </Text>
     </View>
   );
 };

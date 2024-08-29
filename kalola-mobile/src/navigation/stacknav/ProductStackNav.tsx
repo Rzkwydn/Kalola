@@ -4,12 +4,25 @@ import ProductListScreen from '../../screen/Product/ProductListScreen';
 import ProductDetailsScreen from '../../screen/Product/ProductDetailsScreen';
 import EditProductScreen from '../../screen/Product/EditProductScreen';
 import AddProductScreen from '../../screen/Product/AddProductScreen';
+import CustomHeader from '../../components/CustomHeader';
 
-const ProductStack = createStackNavigator();
+export type ProductStackParamList = {
+  ProductList: undefined;
+  ProductDetails: undefined;
+  EditProduct: undefined;
+  AddProduct: undefined;
+};
+
+const ProductStack = createStackNavigator<ProductStackParamList>();
 
 const ProductStackNav: React.FC = () => {
   return (
-    <ProductStack.Navigator initialRouteName="ProductList">
+    <ProductStack.Navigator 
+    initialRouteName="ProductList"
+    screenOptions={({ navigation, route }) => ({
+        header: (props) => <CustomHeader {...props} navigation={navigation as any} />,
+      })}
+    >
       <ProductStack.Screen name="ProductList" component={ProductListScreen}/>
       <ProductStack.Screen name="ProductDetails" component={ProductDetailsScreen}/>
       <ProductStack.Screen name="EditProduct" component={EditProductScreen}/>

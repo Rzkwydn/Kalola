@@ -1,30 +1,31 @@
+// src/redux/authSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface AuthState {
   isAuthenticated: boolean;
-  user: { email: string } | null;
+  userRole: 'admin' | 'cashier' | 'manager' | null;
 }
 
 const initialState: AuthState = {
   isAuthenticated: false,
-  user: null,
+  userRole: null,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<{ email: string; password: string }>) => {
-      // Logic for login (e.g., call to an API) would go here.
+    login: (state, action: PayloadAction<'admin' | 'cashier' | 'manager'>) => {
       state.isAuthenticated = true;
-      state.user = { email: action.payload.email };
+      state.userRole = action.payload;
     },
     logout: (state) => {
       state.isAuthenticated = false;
-      state.user = null;
+      state.userRole = null;
     },
   },
 });
 
 export const { login, logout } = authSlice.actions;
+
 export default authSlice.reducer;
