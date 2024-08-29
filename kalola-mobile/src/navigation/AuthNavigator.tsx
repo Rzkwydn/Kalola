@@ -1,26 +1,19 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from '../screens/Authentication/LoginScreen';
-import RegisterScreen from '../screens/Authentication/RegisterScreen';
-import ResetPasswordScreen from '../screens/Authentication/ResetPasswordScreen';
-
-// Definisikan tipe untuk layar dalam stack navigator ini
-export type AuthStackParamList = {
-  Login: undefined;
-  Register: undefined;
-  Forgot: undefined;
-};
+import LoginScreen from '../screen/Auth/LoginScreen';
+import RegisterScreen from '../screen/Auth/RegisterScreen';
+import ResetPasswordScreen from '../screen/Auth/ResetPasswordScreen';
 
 // Buat stack navigator dengan tipe yang telah didefinisikan
-const Stack = createStackNavigator<AuthStackParamList>();
+const AuthStack = createStackNavigator();
 
 const AuthNavigator: React.FC = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Register" component={RegisterScreen} />
-      <Stack.Screen name='Forgot' component={ResetPasswordScreen}/>
-    </Stack.Navigator>
+    <AuthStack.Navigator initialRouteName="Login">
+      <AuthStack.Screen name="Login" component={LoginScreen} />
+      <AuthStack.Screen name="Register" component={RegisterScreen} />
+      <AuthStack.Screen name="Forgot" component={ResetPasswordScreen}/>
+    </AuthStack.Navigator>
   );
 };
 

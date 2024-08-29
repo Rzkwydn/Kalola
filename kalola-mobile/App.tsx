@@ -1,18 +1,15 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import * as React from 'react';
 import { PaperProvider } from 'react-native-paper';
-import MainNavigator from './src/navigation/MainNavigator';
-import AuthNavigator from './src/navigation/AuthNavigator';
+import { Provider as StoreProvider } from 'react-redux';
+import store from './src/store.js';
+import MainNavigator from './src/navigation/MainNavigator.js';
 
-const App = () => {
+export default function App() {
   return (
-    <PaperProvider>
-      <NavigationContainer>
-        {/* Gunakan navigator yang sesuai berdasarkan status otentikasi */}
-        <MainNavigator/>
-      </NavigationContainer>
+    <StoreProvider store={store}>
+      <PaperProvider>
+        <MainNavigator />
       </PaperProvider>
+    </StoreProvider>
   );
-};
-
-export default App;
+}
