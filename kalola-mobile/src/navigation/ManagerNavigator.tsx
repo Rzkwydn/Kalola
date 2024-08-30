@@ -17,7 +17,7 @@ const ManagerDrawer = createDrawerNavigator<ManagerDrawerParamList>();
 
 const ManagerNavigator: React.FC = () => {
   return (
-    <ManagerDrawer.Navigator screenOptions={{headerShown : false}}>
+    <ManagerDrawer.Navigator initialRouteName='ProductStack' screenOptions={{headerShown : false}}>
         <ManagerDrawer.Screen name='DashboardManager' component={DashboardScreen} />
         <ManagerDrawer.Screen name='OrderStack' component={OrderStackNav} />
         <ManagerDrawer.Screen name='ProductStack' component={ProductStackNav} />

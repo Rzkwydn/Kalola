@@ -15,7 +15,7 @@ const CashierDrawer = createDrawerNavigator<CashierDrawerParamList>();
 
 const CashierNavigator: React.FC = () => {
   return (
-    <CashierDrawer.Navigator screenOptions={{headerShown : false}}>
+    <CashierDrawer.Navigator initialRouteName='TransactionStack' screenOptions={{headerShown : false}}>
         <CashierDrawer.Screen name='DashboardCashier' component={DashboardScreen} />
         <CashierDrawer.Screen name='TransactionStack' component={TransactionStackNav} />
     </CashierDrawer.Navigator>

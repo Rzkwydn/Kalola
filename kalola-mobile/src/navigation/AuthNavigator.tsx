@@ -5,36 +5,32 @@ import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from '../screen/Auth/LoginScreen';
 import RegisterScreen from '../screen/Auth/RegisterScreen';
 import ResetPasswordScreen from '../screen/Auth/ResetPasswordScreen';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/index';
-import MainNavigator from './MainNavigator';
+import AdminNavigator from './AdminNavigator';
+import CashierNavigator from './CashierNavigator';
+import ManagerNavigator from './ManagerNavigator';
 
 export type AuthStackParamList = {
   Login: undefined;
   Register: undefined;
   Forgot: undefined;
-  Main: undefined;
+  Admin: undefined;
+  Cashier: undefined;
+  Manager: undefined;
 };
 
 const AuthStack = createStackNavigator<AuthStackParamList>();
 
 const AuthNavigator: React.FC = () => {
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   return (
-    <NavigationContainer>
       <AuthStack.Navigator screenOptions={{ headerShown: false }}>
-        {!isAuthenticated ? (
-          <>
-            <AuthStack.Screen name="Login" component={LoginScreen} />
-            <AuthStack.Screen name="Register" component={RegisterScreen} />
-            <AuthStack.Screen name="Forgot" component={ResetPasswordScreen} />
-          </>
-        ) : (
-          <AuthStack.Screen name="Main" component={MainNavigator} />
-        )}
+        <AuthStack.Screen name="Login" component={LoginScreen} />
+        <AuthStack.Screen name="Register" component={RegisterScreen} />
+        <AuthStack.Screen name="Forgot" component={ResetPasswordScreen} />
+        <AuthStack.Screen name="Admin" component={AdminNavigator} />
+        <AuthStack.Screen name="Cashier" component={CashierNavigator} />
+        <AuthStack.Screen name="Manager" component={ManagerNavigator} />
       </AuthStack.Navigator>
-    </NavigationContainer>
   );
 };
 

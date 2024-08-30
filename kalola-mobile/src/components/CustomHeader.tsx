@@ -14,21 +14,23 @@ type CustomHeaderProps = StackHeaderProps & {
 
 const CustomHeader: React.FC<CustomHeaderProps> = ({ navigation, back, options, route }) => {
   const title = getHeaderTitle(options, route.name);
-
-  return (
-    <Appbar.Header>
-      {typeof back === 'boolean' && back ? (
-        <Appbar.BackAction onPress={() => navigation.goBack()} />
-      ) : (
-        navigation.openDrawer && (
-          <Appbar.Action
-            icon="menu"
-            onPress={() => navigation.openDrawer()}
-          />
-        )
-      )}
-      <Appbar.Content title={title} />
-    </Appbar.Header>
+            return (
+              <Appbar.Header>
+                {back ? (
+                  <Appbar.BackAction onPress={() => navigation.goBack()} />
+                ) : (navigation as any).openDrawer ? (
+                  <Appbar.Action
+                    icon="menu"
+                    isLeading
+                    onPress={() =>
+                      (
+                        navigation as any as DrawerNavigationProp<{}>
+                      ).openDrawer()
+                    }
+                  />
+                ) : null}
+                <Appbar.Content title={title} />
+              </Appbar.Header>
   );
 };
 
